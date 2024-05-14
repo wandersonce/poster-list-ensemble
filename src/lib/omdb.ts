@@ -3,7 +3,7 @@ import axios from 'axios';
 export async function getPosterInfo(input: string) {
   //LOCAL ENV VARIABLE
   const omdbApiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
-  const url = `http://www.omdbapi.com/?t=${input}&apikey=${omdbApiKey}`;
+  const url = `http://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}`;
 
   try {
     //Fetch data
@@ -11,6 +11,7 @@ export async function getPosterInfo(input: string) {
 
     //Save response in a variable
     const inputData = response.data;
+
     const posterInfo = {
       title: inputData.Title,
       posterUrl: inputData.Poster,
@@ -18,7 +19,7 @@ export async function getPosterInfo(input: string) {
     };
 
     //return only what is required to be used
-    return posterInfo;
+    return inputData.Search;
   } catch (error) {
     console.error('Error fetching poster info:', error);
     throw error; // Re-throw the error for handling at the calling point
