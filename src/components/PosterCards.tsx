@@ -10,7 +10,7 @@ interface PosterDetailsProps {
   Poster: string | undefined;
 }
 
-export default function PosterCard({ searchResults }: SearchResultsProps) {
+export default function PosterCards({ searchResults }: SearchResultsProps) {
   return (
     <div>
       {searchResults?.map((result) => (

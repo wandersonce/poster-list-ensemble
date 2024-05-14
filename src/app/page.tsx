@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { Input } from '@/components/ui/input';
 import { getPosterInfo } from '@/lib/omdb';
-import PosterCard from '@/components/PosterCard';
+import PosterCards from '@/components/PosterCards';
 
 interface PosterDetailsProps {
   Title: string | undefined;
@@ -24,7 +24,6 @@ export default function Home() {
         const posterInfo = await getPosterInfo(searchInput);
         // Use the posterInfo object here
         setPosterDetails(posterInfo);
-        console.log(posterInfo); // Access title, posterUrl, etc.
       } catch (error) {
         // Handle error appropriately
         console.error('Error fetching poster info:', error);
@@ -49,12 +48,16 @@ export default function Home() {
             onChange={(e) => handleInput(e.target.value)}
           />
           <p className="text-xs mt-1">
-            Poster will appear automatically after you type...
+            Posters will appear automatically after you type...
           </p>
         </div>
       </div>
       <div>
-        <PosterCard searchResults={posterDetails} />
+        {posterDetails ? (
+          <PosterCards searchResults={posterDetails} />
+        ) : (
+          <div className="mt-5">No Posters to be showed yet.</div>
+        )}
       </div>
     </main>
   );

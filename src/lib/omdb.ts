@@ -12,13 +12,6 @@ export async function getPosterInfo(input: string) {
     //Save response in a variable
     const inputData = response.data;
 
-    const posterInfo = {
-      title: inputData.Title,
-      posterUrl: inputData.Poster,
-      released: inputData.Released,
-    };
-
-    //return only what is required to be used
     return inputData.Search;
   } catch (error) {
     console.error('Error fetching poster info:', error);
