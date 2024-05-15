@@ -8,7 +8,7 @@ interface PosterProps {
 
 export default function PosterItem({ title, year, poster }: PosterProps) {
   return (
-    <div className="flex flex-col basis-full md:basis-1/2 lg:basis-1/4 bg-dark-bg border-2 border-og-body rounded max-w-[240px]">
+    <div className="flex flex-col basis-full md:basis-1/2 lg:basis-1/4 bg-dark-bg border-2 border-og-body rounded md:max-w-[240px]">
       <div className="relative h-[340px]">
         {poster && poster !== 'N/A' && title && (
           <Image

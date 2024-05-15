@@ -14,7 +14,7 @@ interface PosterDetailsProps {
 
 export default function PosterCards({ searchResults }: SearchResultsProps) {
   return (
-    <div className="flex flex-wrap justify-between items-top w-full mt-8 gap-4">
+    <div className="flex flex-wrap justify-between items-top w-full mt-8 gap-8 md:gap-4">
       {searchResults?.map((result) => (
         <PosterItem
           key={result.imdbID}

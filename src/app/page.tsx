@@ -38,7 +38,7 @@ export default function Home() {
   }, 300);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-dark-body text-og-body">
+    <main className="flex min-h-screen flex-col items-center justify-center p-5 md:p-10 lg:p-24 bg-dark-body text-og-body">
       <div className="flex flex-col gap-5">
         <h2 className="text-3xl font-bold">Find Your Poster!</h2>
         <div>

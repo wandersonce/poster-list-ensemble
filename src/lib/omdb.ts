@@ -8,10 +8,24 @@ export async function getPosterInfo(input: string) {
   try {
     //Fetch data
     const response = await axios.get(url);
+    let postersArray;
 
     //Save response in a variable
-    const inputData = response.data;
+    if (parseInt(response.data.totalResults) > 10) {
+      let totalPages = Math.ceil(response.data.totalResults / 10);
+      postersArray = response.data.Search;
 
+      for (var i = 2; i <= totalPages; i++) {
+        let urlPages = `http://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}&page=${i}`;
+        let newResponse = await axios.get(urlPages);
+
+        postersArray.push(...newResponse.data.Search);
+      }
+
+      return postersArray;
+    }
+
+    const inputData = response.data;
     return inputData.Search;
   } catch (error) {
     console.error('Error fetching poster info:', error);
