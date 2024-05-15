@@ -25,9 +25,17 @@ export default function PosterItem({ title, year, poster }: PosterProps) {
           </div>
         )}
       </div>
-      <div className="flex flex-col p-3 ">
-        <h4 className="text-xl font-bold">{title}</h4>
-        <p className="text-sm">{year}</p>
+      <div className="flex justify-between flex-col p-3 flex-1">
+        <div>
+          <h4 className="text-xl font-bold">{title}</h4>
+          <p className="text-sm">{year}</p>
+        </div>
+
+        <div>
+          <button className="w-full py-2 font-bold text-md border-2  bg-dark-text/50 border-og-body rounded mt-4 hover:bg-dark-text transition-colors">
+            CHECK DETAILS
+          </button>
+        </div>
       </div>
     </div>
   );
