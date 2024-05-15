@@ -3,7 +3,7 @@ import axios from 'axios';
 export async function getPosterInfo(input: string) {
   //LOCAL ENV VARIABLE
   const omdbApiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
-  const url = `http://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}`;
+  const url = `https://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}`;
 
   try {
     //Fetch data
