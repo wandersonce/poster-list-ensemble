@@ -23,6 +23,7 @@ export default function Home() {
     //Fetch data after the search input change
     const fetchData = async () => {
       try {
+        setPosterDetails([]);
         setIsLoading(true);
         const posterInfo = await getPosterInfo(searchInput);
         setIsLoading(false);
@@ -59,10 +60,12 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center md:max-w-screen-md xl:max-w-screen-xl w-full">
+      <div className="flex flex-col justify-center items-center md:max-w-screen-md xl:max-w-screen-xl w-full">
         {/* Show Loading state */}
         {isLoading && (
-          <div className="text-xl font-bold animate-pulse mt-7">Loading...</div>
+          <div className="text-xl font-bold animate-pulse mt-7 w-full text-center">
+            Loading...
+          </div>
         )}
 
         {/* Load Results if has any */}
