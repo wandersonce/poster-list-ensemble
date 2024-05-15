@@ -16,7 +16,7 @@ export async function getPosterInfo(input: string) {
       postersArray = response.data.Search;
 
       for (var i = 2; i <= totalPages; i++) {
-        let urlPages = `http://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}&page=${i}`;
+        let urlPages = `https://www.omdbapi.com/?s=${input}&apikey=${omdbApiKey}&page=${i}`;
         let newResponse = await axios.get(urlPages);
 
         postersArray.push(...newResponse.data.Search);
