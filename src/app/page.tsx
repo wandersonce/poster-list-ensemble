@@ -20,11 +20,13 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    //Fetch data after the search input change
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const posterInfo = await getPosterInfo(searchInput);
         setIsLoading(false);
+
         // Use the posterInfo object here
         setPosterDetails(posterInfo);
       } catch (error) {
@@ -36,6 +38,7 @@ export default function Home() {
     fetchData();
   }, [searchInput]);
 
+  //Using Debounce Callback to only trigger the function after user stop type for 300ms
   const handleInput = useDebouncedCallback((value: string) => {
     setSearchInput(value);
   }, 300);
@@ -45,6 +48,7 @@ export default function Home() {
       <div className="flex flex-col gap-5">
         <h2 className="text-3xl font-bold">Find Your Poster!</h2>
         <div>
+          {/* Search Input */}
           <Input
             placeholder="Post Name..."
             className="bg-dark-bg/50"
@@ -56,11 +60,15 @@ export default function Home() {
         </div>
       </div>
       <div className="flex justify-center items-center md:max-w-screen-md xl:max-w-screen-xl w-full">
+        {/* Show Loading state */}
         {isLoading && (
           <div className="text-xl font-bold animate-pulse mt-7">Loading...</div>
         )}
+
+        {/* Load Results if has any */}
         {posterDetails && <PosterCards searchResults={posterDetails} />}
 
+        {/* If is not loading and no results show */}
         {!posterDetails && !isLoading && (
           <div className="mt-5">No Posters to be showed yet.</div>
         )}

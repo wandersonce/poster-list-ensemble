@@ -14,6 +14,7 @@ interface PosterDetailsProps {
 
 export default function PosterCards({ searchResults }: SearchResultsProps) {
   return (
+    // Wrapper section for all posters
     <div className="flex flex-wrap justify-start items-top w-full mt-8 gap-8 md:gap-4">
       {searchResults?.map((result) => (
         <PosterItem
