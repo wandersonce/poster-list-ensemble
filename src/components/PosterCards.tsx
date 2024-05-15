@@ -1,3 +1,5 @@
+import PosterItem from './PosterItem';
+
 interface SearchResultsProps {
   searchResults: PosterDetailsProps[] | undefined;
 }
@@ -12,9 +14,14 @@ interface PosterDetailsProps {
 
 export default function PosterCards({ searchResults }: SearchResultsProps) {
   return (
-    <div>
+    <div className="flex flex-wrap justify-between items-top w-full mt-8 gap-4">
       {searchResults?.map((result) => (
-        <div key={result.imdbID}>{result.Title}</div>
+        <PosterItem
+          key={result.imdbID}
+          title={result.Title}
+          year={result.Year}
+          poster={result.Poster}
+        />
       ))}
     </div>
   );

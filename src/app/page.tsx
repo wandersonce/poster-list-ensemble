@@ -52,7 +52,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div>
+      <div className="flex justify-center items-center max-w-screen-xl w-full">
         {posterDetails ? (
           <PosterCards searchResults={posterDetails} />
         ) : (
