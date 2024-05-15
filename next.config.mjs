@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'm.media-amazon.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'ia.media-imdb.com',
+        port: '',
+      },
     ],
   },
 };

@@ -17,11 +17,14 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState('');
   const [posterDetails, setPosterDetails] =
     useState<Array<PosterDetailsProps>>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         const posterInfo = await getPosterInfo(searchInput);
+        setIsLoading(false);
         // Use the posterInfo object here
         setPosterDetails(posterInfo);
       } catch (error) {
@@ -52,10 +55,13 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex justify-center items-center max-w-screen-xl w-full">
-        {posterDetails ? (
-          <PosterCards searchResults={posterDetails} />
-        ) : (
+      <div className="flex justify-center items-center md:max-w-screen-md xl:max-w-screen-xl w-full">
+        {isLoading && (
+          <div className="text-xl font-bold animate-pulse mt-7">Loading...</div>
+        )}
+        {posterDetails && <PosterCards searchResults={posterDetails} />}
+
+        {!posterDetails && !isLoading && (
           <div className="mt-5">No Posters to be showed yet.</div>
         )}
       </div>
